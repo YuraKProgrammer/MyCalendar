@@ -10,7 +10,6 @@ import models.Date;
 
 public class MainActivity extends AppCompatActivity {
     private CalendarView calendarView;
-    private ITaskProvider taskProvider = new TaskProvider();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         calendarView=findViewById(R.id.calendarView);
         calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
             Intent myIntent = new Intent(MainActivity.this, PlansActivity.class);
-            myIntent.putExtra("date", new Date(year, month, dayOfMonth));
+            myIntent.putExtra("date", new Date(year, month+1, dayOfMonth));
             MainActivity.this.startActivity(myIntent);
         });
     }
